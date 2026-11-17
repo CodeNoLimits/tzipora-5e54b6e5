@@ -82,7 +82,7 @@ h2 em{font-style:normal;font-weight:400}
 .phones{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:34px 22px 18px;margin:0 -22px;scrollbar-width:none}
 .phones::-webkit-scrollbar{display:none}
 .ph{flex:0 0 58%;max-width:240px;scroll-snap-align:center;border-radius:30px;padding:7px;background:linear-gradient(160deg,#3a2e1f,#120e0a 40%,#2b2217);box-shadow:0 40px 70px -30px rgba(0,0,0,.9),0 0 0 1px rgba(214,166,79,.25);transition:transform .8s var(--ease)}
-.ph img{border-radius:24px;aspect-ratio:9/16;object-fit:cover;width:100%;height:auto}
+.ph img,.ph video{border-radius:24px;aspect-ratio:9/16;object-fit:cover;width:100%;height:auto}
 .ph figcaption{font-size:.85rem;color:var(--mu);text-align:center;padding:10px 6px 4px}
 .links{display:grid;gap:12px;margin-top:1.8rem}
 .lk{display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;padding:16px 20px;border-radius:16px;border:1px solid var(--ln);background:rgba(255,255,255,.03);transition:background .3s,transform .3s var(--ease)}
@@ -117,7 +117,7 @@ background:radial-gradient(80% 90% at 50% 0%,rgba(214,166,79,.16),transparent 70
 .offer .sub{color:var(--mu)}
 .offer .btn{margin-top:1.8rem}
 .offer .fine{margin-top:1.2rem;color:var(--mu);font-size:.92rem}
-.more{margin-top:1.6rem;text-align:center;color:#cfc4b1;font-size:.98rem}
+.more{margin:1.6rem auto 0;max-width:620px;text-align:center;color:#e6dccb;font-size:1rem;padding:18px 22px;border-radius:18px;border:1px solid var(--ln);background:rgba(255,255,255,.025)}
 
 footer{padding:50px 22px 110px;text-align:center;color:#8b806f;font-size:.9rem;border-top:1px solid rgba(214,166,79,.1)}
 footer .serif{color:var(--tx);font-size:1.1rem;direction:ltr;display:inline-block}
@@ -218,7 +218,7 @@ opacity:0;transform:translateY(20px);transition:all .5s var(--ease);pointer-even
   </div>
 
   <div class="phones" id="phones">
-   <figure class="ph rv"><img src="img/b_hook.jpg" alt="מתוך ריל של רומן גארי: סלט קיסר עם הכיתוב ״טרי מהמטבח״" loading="lazy" width="405" height="720"><figcaption>הפתיחה: הכיתוב עולה כבר בשנייה הראשונה</figcaption></figure>
+   <figure class="ph rv"><video src="img/reel_b.mp4" poster="img/b_hook.jpg" muted loop playsinline preload="none" aria-label="ריל של רומן גארי: סלט קיסר עם הכיתוב ״טרי מהמטבח״" width="405" height="720"></video><figcaption>הפתיחה: הכיתוב עולה כבר בשנייה הראשונה</figcaption></figure>
    <figure class="ph rv"><img src="img/a_salmon.jpg" alt="מתוך ריל של רומן גארי: נתח סלמון עם ירקות צלויים" loading="lazy" width="405" height="720"><figcaption>כל מנה בתנועת מצלמה עדינה</figcaption></figure>
    <figure class="ph rv"><img src="img/a_avocado.jpg" alt="מתוך ריל של רומן גארי: טוסט אבוקדו עם ביצים" loading="lazy" width="405" height="720"><figcaption>החיתוכים בדיוק על הקצב של המוזיקה</figcaption></figure>
    <figure class="ph rv"><img src="img/b_nicoise.jpg" alt="מתוך ריל של רומן גארי: סלט ניסואז" loading="lazy" width="405" height="720"><figcaption>צבעים חמים, כמו שהמנה נראית באמת</figcaption></figure>
@@ -317,6 +317,7 @@ function sc(){const r=tl.getBoundingClientRect(),m=innerHeight*.6,h=Math.max(0,M
 st.forEach(s=>s.classList.toggle('on',s.getBoundingClientRect().top<m));
 const cr=course.getBoundingClientRect();fab.classList.toggle('show',scrollY>innerHeight*.9&&(cr.top>innerHeight||cr.bottom<0))}
 addEventListener('scroll',sc,{passive:true});sc();
+const vd=document.querySelector('.ph video');if(vd&&!red)new IntersectionObserver(e=>{e[0].isIntersecting?vd.play().catch(()=>{}):vd.pause()},{threshold:.4}).observe(vd);
 })();
 </script>
 </body>
